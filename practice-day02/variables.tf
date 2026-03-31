@@ -14,7 +14,7 @@ variable "region" {
 variable "instance_type" {
   type        = string
   description = "the ec2 instance type"
-  default     = "t2.micro"
+  default     = "t3.micro"
 }
 
 # Number type
@@ -55,7 +55,7 @@ variable "allowed_cidr_blocks" {
 variable "allowed_instance_types" {
   type        = list(string)
   description = "list of allowed ec2 instance types"
-  default     = ["t2.micro", "t2.small", "t3.micro"]
+  default     = ["t3.micro", "t3.small", "t4g.micro"]
   # Order matters: index 0 = t2.micro, index 1 = t2.small
 }
 
@@ -65,8 +65,8 @@ variable "instance_tags" {
   description = "tags to apply to the ec2 instances"
   default = {
     "Environment" = "dev"
-    "Project"     = "terraform-course"
-    "Owner"       = "devops-team"
+    "Project"     = "my instance"
+    "Owner"       = "pradipta"
   }
   # Access: var.instance_tags["Environment"] = "dev"
   # Keys are always strings, values must match the declared type
@@ -108,7 +108,7 @@ variable "server_config" {
   description = "Complete server configuration object"
   default = {
     name           = "web-server"
-    instance_type  = "t2.micro"
+    instance_type  = "t3.micro"
     monitoring     = true
     storage_gb     = 20
     backup_enabled = false
